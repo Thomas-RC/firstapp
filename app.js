@@ -1,17 +1,17 @@
 const http = require('http');
+const config = require('./config')
+const express = require('express')
+const app = express()
 
-const hostname = '0.0.0.0';
-const port = 3000;
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.write('<html>');
-    res.write('<head><title>First app</title><head>');
-    res.write('<body>Hello world</body>');
-    res.write('</html>');
-    return res.end();
-});
+var msg = 'Siema wariaty'
+app.get('/',(req, res) => {
+    res.send(`<h1>${msg}</h1>`)
+})
 
+
+const port = config.PORT
+const hostname = config.HOSTNAME
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
